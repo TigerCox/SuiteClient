@@ -6,9 +6,9 @@ import { setApplicantName } from '../../actions/applicant/applicantActions';
 import FieldGroup from '../widgets/FieldGroup';
 
 const ROOT_ID = {id: 'financeDriverShort', class: 'FinanceDriver FinanceDriverShort'};
-const APPLICANT_FIRST_NAME = {id: 'applicant.name.first', label: 'First Name', class: 'Name FirstName', func: 'onFirstNameChange', isRequired: true};
-const APPLICANT_MIDDLE_NAME = {id: 'applicant.name.middle', label: 'Middle Name', class: 'Name MiddleName', func: 'onMiddleNameChange', isRequired: true};
-const APPLICANT_LAST_NAME = {id: 'applicant.name.last', label: 'Last Name', class: 'Name LastName', func: 'onLastNameChange', isRequired: true};
+const APPLICANT_NAME_FIRST = {id: 'financeDriverShort.applicant.name.first', label: 'First Name', class: 'Name FirstName', func: 'onFirstNameChange', isRequired: true};
+const APPLICANT_MIDDLE_NAME = {id: 'financeDriverShort.applicant.name.middle', label: 'Middle Name', class: 'Name MiddleName', func: 'onMiddleNameChange', isRequired: true};
+const APPLICANT_LAST_NAME = {id: 'financeDriverShort.applicant.name.last', label: 'Last Name', class: 'Name LastName', func: 'onLastNameChange', isRequired: true};
 
 class FDShort extends React.Component {
   constructor(props) {
@@ -21,11 +21,8 @@ class FDShort extends React.Component {
     this.state = {};
   }
 
-  createId(baseId, id, includeWithNoBaseId = true) {
-    return (baseId && (baseId + '.' + id)) || (includeWithNoBaseId && id);
-  }
-
   getValue(type) {
+    console.log(this.props)
     return this.props[type.id];
   }
 
@@ -43,18 +40,18 @@ class FDShort extends React.Component {
   }
 
   validate(type) {
-    return this.getState(type) === undefined ? null : (type.isRequired && this.getValue(type).length < 1) ? type.label + " is required" : "";
+    return this.getState(type) === undefined ? null : (type.isRequired && this.getValue(type).length < 1) ? type.label + " is required" : null;
   }
 
   render() {
     return (
       <div id={ROOT_ID.id} className={ROOT_ID.class}>
         <form>
-          <FieldGroup id={this.createId(ROOT_ID.id, APPLICANT_FIRST_NAME.id)} label={APPLICANT_FIRST_NAME.label} className={APPLICANT_FIRST_NAME.class} type='text'
-            value={this.getValue(APPLICANT_FIRST_NAME)} onChange={(e) => this.setValue(APPLICANT_FIRST_NAME, e.target.value)} onBlur={(e) => this.setState(APPLICANT_FIRST_NAME, true)} validation={this.validate(APPLICANT_FIRST_NAME)} />
-          <FieldGroup id={this.createId(ROOT_ID.id, APPLICANT_MIDDLE_NAME.id)} label={APPLICANT_MIDDLE_NAME.label} className={APPLICANT_MIDDLE_NAME.class} type='text'
+          <FieldGroup id={APPLICANT_NAME_FIRST.id} label={APPLICANT_NAME_FIRST.label} className={APPLICANT_NAME_FIRST.class} type='text'
+            value={this.getValue(APPLICANT_NAME_FIRST)} onChange={(e) => this.setValue(APPLICANT_NAME_FIRST, e.target.value)} onBlur={(e) => this.setState(APPLICANT_NAME_FIRST, true)} validation={this.validate(APPLICANT_NAME_FIRST)} />
+          <FieldGroup id={APPLICANT_MIDDLE_NAME.id} label={APPLICANT_MIDDLE_NAME.label} className={APPLICANT_MIDDLE_NAME.class} type='text'
             value={this.getValue(APPLICANT_MIDDLE_NAME)} onChange={(e) => this.setValue(APPLICANT_MIDDLE_NAME, e.target.value)} onBlur={(e) => this.setState(APPLICANT_MIDDLE_NAME, true)} validation={this.validate(APPLICANT_MIDDLE_NAME)} />
-          <FieldGroup id={this.createId(ROOT_ID.id, APPLICANT_LAST_NAME.id)} label={APPLICANT_LAST_NAME.label} className={APPLICANT_LAST_NAME.class} type='text'
+          <FieldGroup id={APPLICANT_LAST_NAME.id} label={APPLICANT_LAST_NAME.label} className={APPLICANT_LAST_NAME.class} type='text'
             value={this.getValue(APPLICANT_LAST_NAME)} onChange={(e) => this.setValue(APPLICANT_LAST_NAME, e.target.value)} onBlur={(e) => this.setState(APPLICANT_LAST_NAME, true)} validation={this.validate(APPLICANT_LAST_NAME)} />
         </form>
       </div>
@@ -63,17 +60,17 @@ class FDShort extends React.Component {
 }
 
 FDShort.propTypes = {
-  [APPLICANT_FIRST_NAME.id]: PropTypes.string.isRequired,
+  [APPLICANT_NAME_FIRST.id]: PropTypes.string.isRequired,
   [APPLICANT_MIDDLE_NAME.id]: PropTypes.string.isRequired,
   [APPLICANT_LAST_NAME.id]: PropTypes.string.isRequired,
-  [APPLICANT_FIRST_NAME.func]: PropTypes.func.isRequired,
+  [APPLICANT_NAME_FIRST.func]: PropTypes.func.isRequired,
   [APPLICANT_MIDDLE_NAME.func]: PropTypes.func.isRequired,
   [APPLICANT_LAST_NAME.func]: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
   return {
-    [APPLICANT_FIRST_NAME.id]: state.applicant.name.first,
+    [APPLICANT_NAME_FIRST.id]: state.applicant.name.first,
     [APPLICANT_MIDDLE_NAME.id]: state.applicant.name.middle,
     [APPLICANT_LAST_NAME.id]: state.applicant.name.last,
   };
@@ -81,7 +78,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    [APPLICANT_FIRST_NAME.func]: (firstName) => {
+    [APPLICANT_NAME_FIRST.func]: (firstName) => {
       dispatch(setApplicantName({ first: firstName }));
     },
     [APPLICANT_MIDDLE_NAME.func]: (middleName) => {

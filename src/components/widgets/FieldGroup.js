@@ -16,7 +16,7 @@ FieldGroup.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
   className: PropTypes.string,
-  validation: PropTypes.func
+  validation: PropTypes.string
 };
 
 export default FieldGroup;

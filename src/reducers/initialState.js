@@ -24,6 +24,14 @@ export default {
       city: '',
       state: '',
       zip: '',
+    },
+    pii: {
+      socialSecurity: '',
+      dateOfBirth: ''
+    },
+    employment: {
+      income: '',
+      lengthAtJob: ''
     }
   }
 };

@@ -1,0 +1,28 @@
+.FinanceDriverShort .Name {
+  display: flex;
+}
+
+.FinanceDriverShort .Name > * {
+  flex: 1;
+  margin: 0 5px;
+}
+
+.FinanceDriverShort .Email {
+  display: flex;
+}
+
+.FinanceDriverShort .Email > * {
+  flex: 1;
+  margin: 0 5px;
+}
+
+.FinanceDriverShort .Submit {
+  text-align: center;
+  padding: 15px;
+  margin: auto;
+  background: blue;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5em;
+  cursor: pointer;
+}

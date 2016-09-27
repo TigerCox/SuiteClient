@@ -98,6 +98,7 @@ Check out the [FAQ](/faq/FAQ.md)
 
 
 Additional information
+* https://github.com/coreybutler/nvm-windows
 * nvm install -v6.6.0
 * apm install language-babel
 * npm init -y

@@ -1,6 +1,7 @@
 import {combineReducers} from 'redux';
 import loadingIndicatorStatus from './loadingIndicatorReducer';
 import loadingStatus from './loadingStatusReducer';
+import vehicle from './vehicle';
 import applicant from './applicant/applicant';
 
 // Note that I chose a shorter name above when importing reducers.
@@ -10,6 +11,7 @@ import applicant from './applicant/applicant';
 // and value match)
 const rootReducer = combineReducers({
   applicant,
+  vehicle,
   loadingStatus,
   loadingIndicatorStatus
 });

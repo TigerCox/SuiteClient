@@ -9,29 +9,33 @@ export default {
   },
   applicant: {
     name: {
-      first: '',
-      middle: '',
-      last: '',
+      first: 'Joe',
+      middle: 'Tom',
+      last: 'Sal',
       suffix: ''
     },
     contact: {
-      phone: '',
-      email: '',
+      phone: '503-582-9676',
+      email: 'sal@sal.com',
     },
     address: {
-      line1: '',
+      line1: '700 NE Multnomah St',
       line2: '',
-      city: '',
-      state: '',
-      zip: '',
+      city: 'Portland',
+      state: 'OR',
+      zip: '97209',
     },
     pii: {
-      socialSecurity: '',
-      dateOfBirth: ''
+      socialSecurity: '503-37-2849',
+      dateOfBirth: '1990-10-10'
     },
     employment: {
-      income: '',
-      lengthAtJob: ''
+      income: '10000',
+      lengthAtJob: '2'
     }
+  },
+  vehicle: {
+    name: '',
+    vin: '1FA6P8TH1F5408787'
   }
 };

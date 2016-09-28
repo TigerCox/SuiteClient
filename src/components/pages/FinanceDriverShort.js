@@ -135,6 +135,7 @@ class FDShort extends React.Component {
           <this.FormElement type={APPLICANT_EMPLOYMENT_TIMEATJOB} />
         </div>
         <div id={SUBMIT.id} className={SUBMIT.class} onClick={(e) => this.props[SUBMIT.func]()}>{SUBMIT.label}</div>
+        <a onClick={()=>{this.props.history.push('/')}}>PurchaseOptions</a>
       </div>
     );
   }

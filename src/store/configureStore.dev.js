@@ -1,6 +1,7 @@
 // This file merely configures the store for hot reloading.
 // This boilerplate file is likely to be the same for each project that uses Redux.
 // With Redux, the actual stores are in /reducers.
+import api from '../api/api';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducer from '../reducers';
@@ -16,7 +17,7 @@ export default function configureStore(initialState) {
     reducer,
     initialState,
     compose(
-      applyMiddleware(thunk, reduxImmutableStateInvariant()),
+      applyMiddleware(api, thunk, reduxImmutableStateInvariant()),
       window.devToolsExtension ? window.devToolsExtension() : f => f // add support for Redux dev tools, if enabled. Otherwise, do nothing.
     )
   );

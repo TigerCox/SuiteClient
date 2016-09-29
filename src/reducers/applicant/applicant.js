@@ -1,7 +1,5 @@
 import {APPLICANT_SET_NAME, APPLICANT_SET_CONTACT, APPLICANT_SET_ADDRESS, APPLICANT_SET_PII, APPLICANT_SET_EMPLOYMENT} from '../../actions/applicant/applicantActionTypes';
-import {SUBMIT_FINANCE_DRIVER_SHORT} from '../../actions/actionTypes';
 import initialState from '../initialState';
-import {submitFinanceDriverShort} from '../../api/api';
 
 const getValue = (state, action, section, name, defaultValue = '') => {
   if (!action || !action[section] || action[section][name] === undefined || action[section][name] === null) {
@@ -56,17 +54,6 @@ const applicant = (state = initialState.applicant, action) => {
           lengthAtJob: getValue(state, action, 'employment', 'lengthAtJob')
         }
       });
-    case SUBMIT_FINANCE_DRIVER_SHORT:
-      submitFinanceDriverShort(state).then((val) => {
-        if (val.status !== 200) {
-          alert(val.statusText);
-        } else if (val.data.errorMsg !== null) {
-          alert(val.data.errorMsg);
-        } else {
-          alert("prequalRefNum:" + val.data.prequalRefNum + ", leadRefNum:" + val.data.leadRefNum);
-        }
-      });
-      return state;
     default:
       return state;
   }
